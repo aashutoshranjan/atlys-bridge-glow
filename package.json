@@ -1,15 +1,16 @@
 {
-  "name": "tanstack_start_ts",
+  "name": "atlys-integrated-infotech",
   "private": true,
-  "sideEffects": false,
+  "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite dev",
+    "dev": "vite",
     "build": "vite build",
     "build:dev": "vite build --mode development",
     "preview": "vite preview",
     "lint": "eslint .",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "change-company": "bash ./change-company.sh"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",
