@@ -1,17 +1,16 @@
 import { Link } from "react-router-dom";
-import { Linkedin, MapPin, Mail, Phone, MessageCircle } from "lucide-react";
+import { Linkedin, MapPin, Mail, Phone, MessageCircle, ExternalLink } from "lucide-react";
 import Logo from "@/components/Logo";
 import { company } from "@/config/company";
 
 const links = [
   { label: "Features", to: "/features" },
-  { label: "Resources", to: "/features" },
   { label: "About Us", to: "/about" },
+  { label: "Internship With Us", to: "/internships" },
+  { label: "Contact", to: "/contact" },
   { label: "Privacy Policy", to: "/privacy" },
   { label: "Terms & Conditions", to: "/terms" },
   { label: "Refund Policy", to: "/refund" },
-  { label: "Internship With Us", to: "/internships" },
-  { label: "Contact", to: "/contact" },
 ];
 
 export default function Footer() {
@@ -23,6 +22,22 @@ export default function Footer() {
           <p className="text-sm text-muted-foreground max-w-sm leading-relaxed">
             {company.footerText}
           </p>
+          <div className="rounded-2xl glass p-4 text-sm">
+            <div className="text-xs uppercase tracking-wider text-muted-foreground mb-1">
+              Our Training & Internship Platform
+            </div>
+            <a
+              href={company.trainingPlatformUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-1.5 font-semibold text-primary hover:underline"
+            >
+              {company.trainingPlatformName} <ExternalLink className="size-3.5" />
+            </a>
+            <p className="text-xs text-muted-foreground mt-1.5 leading-relaxed">
+              {company.trainingPlatformLabel}
+            </p>
+          </div>
           <div className="space-y-2.5 text-sm text-muted-foreground">
             <div className="flex gap-2.5">
               <MapPin className="size-4 mt-0.5 text-primary shrink-0" />
@@ -76,35 +91,34 @@ export default function Footer() {
           </h4>
           <p className="text-sm text-muted-foreground leading-relaxed">
             For any concerns or unsubscribe requests, please submit your report
-            only through our official Google Form –{" "}
-            <a
-              href={company.unsubscribeFormUrl}
-              target="_blank"
-              rel="noreferrer"
-              className="text-primary underline underline-offset-4"
-            >
-              Click here For Unsubscribe &amp; Report
-            </a>
-            .
+            only through our official Google Form.
           </p>
-          <div className="flex items-center gap-3">
+          <a
+            href={company.unsubscribeFormUrl}
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex items-center justify-center gap-2 w-full rounded-full h-11 px-5 text-sm font-semibold btn-brand"
+          >
+            <Mail className="size-4" /> Unsubscribe & Report
+          </a>
+          <div className="flex items-center gap-3 pt-1">
             <a
               href={company.linkedinUrl}
               target="_blank"
               rel="noreferrer"
               aria-label="LinkedIn"
-              className="h-10 w-10 grid place-items-center rounded-xl glass hover:bg-primary hover:text-white transition"
+              className="inline-flex items-center gap-2 h-10 px-4 rounded-full text-sm font-medium bg-[#0A66C2] text-white hover:brightness-110 transition shadow-[var(--shadow-glass)]"
             >
-              <Linkedin className="size-4" />
+              <Linkedin className="size-4" /> LinkedIn
             </a>
             <a
               href={company.whatsappLink}
               target="_blank"
               rel="noreferrer"
               aria-label="WhatsApp"
-              className="h-10 w-10 grid place-items-center rounded-xl glass hover:bg-primary hover:text-white transition"
+              className="inline-flex items-center gap-2 h-10 px-4 rounded-full text-sm font-medium bg-emerald-500 text-white hover:brightness-110 transition shadow-[var(--shadow-glass)]"
             >
-              <MessageCircle className="size-4" />
+              <MessageCircle className="size-4" /> WhatsApp
             </a>
           </div>
         </div>
