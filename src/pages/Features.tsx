@@ -70,7 +70,7 @@ export default function Features() {
               transition={{ duration: 0.4, delay: (i % 6) * 0.04 }}
               className="glass rounded-2xl p-7 hover:-translate-y-1 transition group"
             >
-              <div className="h-12 w-12 rounded-2xl bg-[var(--gradient-brand)] grid place-items-center text-white mb-5 shadow-[var(--shadow-glass)]">
+              <div className="h-12 w-12 rounded-2xl btn-brand grid place-items-center text-white mb-5 shadow-[var(--shadow-glass)]">
                 <f.icon className="size-5" />
               </div>
               <h3 className="font-display font-bold text-lg mb-2">{f.t}</h3>
@@ -95,7 +95,7 @@ export default function Features() {
             <p className="text-muted-foreground text-lg leading-relaxed mb-8">
               Our service catalog is built around what consistently produces results in production — not what looks good in a sales deck.
             </p>
-            <Button asChild className="rounded-full h-12 px-7 bg-[var(--gradient-brand)] text-white">
+            <Button asChild className="rounded-full h-12 px-7 btn-brand text-white">
               <Link to="/contact">Get a tailored proposal <ArrowRight className="size-4" /></Link>
             </Button>
           </div>

@@ -122,7 +122,7 @@ export default function Home() {
               strategy to operations.
             </p>
             <div className="mt-9 flex flex-wrap gap-3">
-              <Button asChild size="lg" className="rounded-full h-12 px-7 bg-[var(--gradient-brand)] text-white shadow-[var(--shadow-elevated)]">
+              <Button asChild size="lg" className="rounded-full h-12 px-7 btn-brand text-white shadow-[var(--shadow-elevated)]">
                 <Link to="/contact">Talk to an expert <ArrowRight className="size-4" /></Link>
               </Button>
               <Button asChild size="lg" variant="outline" className="rounded-full h-12 px-7 glass border-white/60">
@@ -190,7 +190,7 @@ export default function Home() {
                 transition={{ duration: 0.4, delay: i * 0.05 }}
                 className="glass rounded-2xl p-6 hover:-translate-y-1 transition group"
               >
-                <div className="h-11 w-11 rounded-xl bg-[var(--gradient-brand)] grid place-items-center text-white mb-4 shadow-[var(--shadow-glass)]">
+                <div className="h-11 w-11 rounded-xl btn-brand grid place-items-center text-white mb-4 shadow-[var(--shadow-glass)]">
                   <s.icon className="size-5" />
                 </div>
                 <h3 className="font-display font-semibold text-lg mb-2">{s.title}</h3>
@@ -229,7 +229,7 @@ export default function Home() {
               — not deliverables. Here's what teams typically see after working
               with us.
             </p>
-            <Button asChild className="rounded-full h-12 px-7 bg-[var(--gradient-brand)] text-white">
+            <Button asChild className="rounded-full h-12 px-7 btn-brand text-white">
               <Link to="/contact">Schedule a discovery call <ArrowRight className="size-4" /></Link>
             </Button>
           </div>
@@ -256,7 +256,7 @@ export default function Home() {
               <Quote className="size-7 text-primary mb-4" />
               <p className="text-foreground/85 leading-relaxed flex-1">"{t.q}"</p>
               <div className="mt-6 flex items-center gap-3">
-                <div className="h-11 w-11 rounded-full bg-[var(--gradient-brand)] grid place-items-center text-white font-semibold">
+                <div className="h-11 w-11 rounded-full btn-brand grid place-items-center text-white font-semibold">
                   {t.name[0]}
                 </div>
                 <div>
@@ -296,7 +296,7 @@ export default function Home() {
 
       {/* CTA */}
       <section className="container mx-auto max-w-7xl px-5 lg:px-8 py-24">
-        <div className="relative overflow-hidden rounded-3xl bg-[var(--gradient-brand)] p-10 lg:p-16 text-white">
+        <div className="relative overflow-hidden rounded-3xl btn-brand p-10 lg:p-16 text-white">
           <div className="absolute inset-0 grid-bg opacity-20 pointer-events-none" />
           <div className="absolute -right-20 -top-20 h-80 w-80 rounded-full bg-white/10 blur-3xl" />
           <div className="relative grid lg:grid-cols-2 gap-10 items-center">
@@ -371,7 +371,7 @@ export default function Home() {
               required
               className="rounded-full h-12 px-5 bg-white/80 border-white/70"
             />
-            <Button type="submit" className="rounded-full h-12 px-6 bg-[var(--gradient-brand)] text-white">
+            <Button type="submit" className="rounded-full h-12 px-6 btn-brand text-white">
               Subscribe <Zap className="size-4" />
             </Button>
           </form>

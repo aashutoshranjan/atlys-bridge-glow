@@ -37,7 +37,7 @@ export default function Contact() {
         <div className="lg:col-span-5 space-y-5">
           <div className="glass-strong rounded-3xl p-7">
             <div className="flex items-start gap-4">
-              <div className="h-11 w-11 rounded-xl bg-[var(--gradient-brand)] grid place-items-center text-white shrink-0">
+              <div className="h-11 w-11 rounded-xl btn-brand grid place-items-center text-white shrink-0">
                 <MapPin className="size-5" />
               </div>
               <div>
@@ -53,7 +53,7 @@ export default function Contact() {
           </div>
 
           <a href={`mailto:${company.supportEmail}`} className="glass rounded-2xl p-6 flex items-center gap-4 hover:-translate-y-1 transition">
-            <div className="h-11 w-11 rounded-xl bg-[var(--gradient-brand)] grid place-items-center text-white shrink-0"><Mail className="size-5" /></div>
+            <div className="h-11 w-11 rounded-xl btn-brand grid place-items-center text-white shrink-0"><Mail className="size-5" /></div>
             <div>
               <div className="text-xs uppercase tracking-wider text-muted-foreground">Support email</div>
               <div className="font-semibold">{company.supportEmail}</div>
@@ -61,7 +61,7 @@ export default function Contact() {
           </a>
 
           <a href={company.whatsappLink} target="_blank" rel="noreferrer" className="glass rounded-2xl p-6 flex items-center gap-4 hover:-translate-y-1 transition">
-            <div className="h-11 w-11 rounded-xl bg-[var(--gradient-brand)] grid place-items-center text-white shrink-0"><MessageCircle className="size-5" /></div>
+            <div className="h-11 w-11 rounded-xl btn-brand grid place-items-center text-white shrink-0"><MessageCircle className="size-5" /></div>
             <div>
               <div className="text-xs uppercase tracking-wider text-muted-foreground">WhatsApp support</div>
               <div className="font-semibold">{company.whatsappNumber}</div>
@@ -69,7 +69,7 @@ export default function Contact() {
           </a>
 
           <div className="glass rounded-2xl p-6 flex items-center gap-4">
-            <div className="h-11 w-11 rounded-xl bg-[var(--gradient-brand)] grid place-items-center text-white shrink-0"><Phone className="size-5" /></div>
+            <div className="h-11 w-11 rounded-xl btn-brand grid place-items-center text-white shrink-0"><Phone className="size-5" /></div>
             <div>
               <div className="text-xs uppercase tracking-wider text-muted-foreground">Phone</div>
               <div className="font-semibold">{company.phoneNumber}</div>
@@ -77,7 +77,7 @@ export default function Contact() {
           </div>
 
           <a href={company.linkedinUrl} target="_blank" rel="noreferrer" className="glass rounded-2xl p-6 flex items-center gap-4 hover:-translate-y-1 transition">
-            <div className="h-11 w-11 rounded-xl bg-[var(--gradient-brand)] grid place-items-center text-white shrink-0"><Linkedin className="size-5" /></div>
+            <div className="h-11 w-11 rounded-xl btn-brand grid place-items-center text-white shrink-0"><Linkedin className="size-5" /></div>
             <div>
               <div className="text-xs uppercase tracking-wider text-muted-foreground">Connect on</div>
               <div className="font-semibold">LinkedIn</div>
@@ -116,7 +116,7 @@ export default function Contact() {
               <Label htmlFor="message">Message</Label>
               <Textarea id="message" rows={6} value={form.message} onChange={(e) => update("message", e.target.value)} className="bg-white/70 border-white/70" />
             </div>
-            <Button type="submit" className="rounded-full h-12 px-7 bg-[var(--gradient-brand)] text-white">
+            <Button type="submit" className="rounded-full h-12 px-7 btn-brand text-white">
               Send message <Send className="size-4" />
             </Button>
           </form>
@@ -134,7 +134,7 @@ export default function Contact() {
               className="flex flex-col sm:flex-row gap-3"
             >
               <Input type="email" placeholder="you@company.com" value={news} onChange={(e) => setNews(e.target.value)} className="rounded-full h-12 px-5 bg-white/70 border-white/70" />
-              <Button type="submit" className="rounded-full h-12 px-6 bg-[var(--gradient-brand)] text-white">Subscribe</Button>
+              <Button type="submit" className="rounded-full h-12 px-6 btn-brand text-white">Subscribe</Button>
             </form>
           </div>
         </div>
