@@ -151,10 +151,12 @@
   color: #ffffff;
   border: 1px solid color-mix(in oklab, white 25%, transparent);
   box-shadow: var(--shadow-glass);
+  transition: filter 0.2s ease;
 }
-@utility btn-brand:hover {
+.btn-brand:hover {
   filter: brightness(1.06);
 }
+
 
 
 @utility hero-bg {
