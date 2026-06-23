@@ -6,11 +6,17 @@ export const company = {
   shortName: "Atlys",
   domain: "atlysbridge.com",
   websiteUrl: "https://atlysbridge.com",
-  logo: "/logo.svg",
+  logo: "/atlys-logo.png",
   tagline: "Engineering tomorrow's enterprise — IT, cloud, AI & talent.",
 
-  supportEmail: "support@atlysbridge.com",
-  hrEmail: "support@atlysbridge.com",
+  supportEmail: "support@lmstraineeprogram.in",
+  hrEmail: "support@lmstraineeprogram.in",
+
+  // Internship training & delivery platform
+  trainingPlatformName: "lmstraineeprogram.in",
+  trainingPlatformUrl: "https://lmstraineeprogram.in",
+  trainingPlatformLabel:
+    "lmstraineeprogram.in is our Internship platform where training and internship happen.",
 
   whatsappNumber: "+91 9936667124",
   whatsappLink: "https://wa.me/919936667124",
@@ -36,7 +42,7 @@ export const company = {
   },
 
   qrCodePath: "/payment-qr.png",
-  unsubscribeFormUrl: "https://forms.gle/",
+  unsubscribeFormUrl: "https://forms.gle/v7ssvMGC26TcyHkx7",
 } as const;
 
 export type CompanyConfig = typeof company;

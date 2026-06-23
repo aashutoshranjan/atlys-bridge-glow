@@ -145,6 +145,18 @@
   color: transparent;
 }
 
+@utility btn-brand {
+  background-image: var(--gradient-brand);
+  background-color: var(--color-primary);
+  color: #ffffff;
+  border: 1px solid color-mix(in oklab, white 25%, transparent);
+  box-shadow: var(--shadow-glass);
+}
+@utility btn-brand:hover {
+  filter: brightness(1.06);
+}
+
+
 @utility hero-bg {
   background: var(--gradient-hero);
 }
