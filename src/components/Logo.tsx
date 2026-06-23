@@ -1,14 +1,16 @@
 import { Link } from "react-router-dom";
 import { company } from "@/config/company";
+import logoSrc from "@/assets/atlys-logo.png";
 
 export default function Logo({ className = "" }: { className?: string }) {
   return (
-    <Link to="/" className={`flex items-center gap-2.5 group ${className}`}>
-      <div className="relative h-9 w-9 rounded-xl bg-[var(--gradient-brand)] grid place-items-center shadow-[var(--shadow-glass)] overflow-hidden">
-        <span className="text-white font-display font-bold text-lg">
-          {company.shortName[0]}
-        </span>
-        <div className="absolute inset-0 bg-white/0 group-hover:bg-white/10 transition" />
+    <Link to="/" className={`flex items-center gap-3 group ${className}`}>
+      <div className="relative h-10 w-10 rounded-xl bg-white/70 backdrop-blur grid place-items-center shadow-[var(--shadow-glass)] border border-white/70 overflow-hidden">
+        <img
+          src={logoSrc}
+          alt={`${company.name} logo`}
+          className="h-8 w-8 object-contain"
+        />
       </div>
       <div className="flex flex-col leading-tight">
         <span className="font-display font-bold text-[15px] text-foreground">

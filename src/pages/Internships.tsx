@@ -86,7 +86,7 @@ export default function Internships() {
               className="glass rounded-2xl p-7 flex flex-col hover:-translate-y-1 transition"
             >
               <div className="flex items-start justify-between mb-4">
-                <div className="h-11 w-11 rounded-xl bg-[var(--gradient-brand)] grid place-items-center text-white">
+                <div className="h-11 w-11 rounded-xl btn-brand grid place-items-center text-white">
                   <GraduationCap className="size-5" />
                 </div>
                 <span className="text-[10px] font-semibold uppercase tracking-wider px-2 py-1 rounded-full bg-primary/8 text-primary">Open</span>
@@ -98,7 +98,7 @@ export default function Internships() {
                 <div className="flex items-center gap-2"><Clock className="size-3.5 text-primary" /> 8–12 weeks · Flexible</div>
                 <div className="flex items-center gap-2"><Award className="size-3.5 text-primary" /> Certificate of Completion</div>
               </div>
-              <Button asChild className="mt-auto rounded-full bg-[var(--gradient-brand)] text-white">
+              <Button asChild className="mt-auto rounded-full btn-brand text-white">
                 <Link to="/form">Apply Now <ArrowRight className="size-4" /></Link>
               </Button>
             </motion.div>

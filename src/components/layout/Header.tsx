@@ -1,8 +1,9 @@
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { Menu, X, ArrowRight, MessageCircle } from "lucide-react";
+import { Menu, X, ArrowRight, MessageCircle, Linkedin } from "lucide-react";
 import Logo from "@/components/Logo";
 import { Button } from "@/components/ui/button";
+import { company } from "@/config/company";
 
 const NAV = [
   { to: "/", label: "Home" },
@@ -55,6 +56,15 @@ export default function Header() {
         </nav>
 
         <div className="hidden lg:flex items-center gap-2.5">
+          <a
+            href={company.linkedinUrl}
+            target="_blank"
+            rel="noreferrer"
+            aria-label="LinkedIn"
+            className="h-10 w-10 grid place-items-center rounded-full glass !border-white/60 text-[#0A66C2] hover:text-white hover:bg-[#0A66C2] transition"
+          >
+            <Linkedin className="size-4" />
+          </a>
           <Button
             variant="ghost"
             onClick={() => navigate("/contact")}
@@ -64,7 +74,7 @@ export default function Header() {
           </Button>
           <Button
             onClick={() => navigate("/form")}
-            className="rounded-full h-10 px-5 bg-[var(--gradient-brand)] hover:opacity-95 text-white shadow-[var(--shadow-glass)]"
+            className="btn-brand rounded-full h-10 px-5 font-semibold"
           >
             Apply for Internship <ArrowRight className="size-4" />
           </Button>
@@ -110,11 +120,19 @@ export default function Header() {
               <Link
                 to="/form"
                 onClick={() => setOpen(false)}
-                className="rounded-full h-11 grid place-items-center text-sm font-semibold text-white bg-[var(--gradient-brand)]"
+                className="btn-brand rounded-full h-11 grid place-items-center text-sm font-semibold"
               >
                 Apply Now
               </Link>
             </div>
+            <a
+              href={company.linkedinUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="mt-2 flex items-center justify-center gap-2 rounded-full h-11 text-sm font-medium bg-[#0A66C2] text-white"
+            >
+              <Linkedin className="size-4" /> Follow us on LinkedIn
+            </a>
           </div>
         </div>
       )}

@@ -100,7 +100,7 @@ export default function About() {
       <section className="container mx-auto max-w-7xl px-5 lg:px-8 py-12">
         <div className="grid md:grid-cols-2 gap-6">
           <div className="glass-strong rounded-3xl p-10">
-            <div className="h-12 w-12 rounded-2xl bg-[var(--gradient-brand)] grid place-items-center text-white mb-5"><Target className="size-5" /></div>
+            <div className="h-12 w-12 rounded-2xl btn-brand grid place-items-center text-white mb-5"><Target className="size-5" /></div>
             <h3 className="font-display text-2xl font-bold mb-3">Our Mission</h3>
             <p className="text-muted-foreground leading-relaxed">
               To help enterprises ship better software, adopt AI responsibly,
@@ -109,7 +109,7 @@ export default function About() {
             </p>
           </div>
           <div className="glass-strong rounded-3xl p-10">
-            <div className="h-12 w-12 rounded-2xl bg-[var(--gradient-brand)] grid place-items-center text-white mb-5"><Eye className="size-5" /></div>
+            <div className="h-12 w-12 rounded-2xl btn-brand grid place-items-center text-white mb-5"><Eye className="size-5" /></div>
             <h3 className="font-display text-2xl font-bold mb-3">Our Vision</h3>
             <p className="text-muted-foreground leading-relaxed">
               To be the most trusted integrated IT and talent partner across
@@ -173,7 +173,7 @@ export default function About() {
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {leadership.map((p) => (
             <div key={p.name} className="glass rounded-2xl p-6 text-center">
-              <div className="mx-auto h-20 w-20 rounded-full bg-[var(--gradient-brand)] grid place-items-center text-white font-display text-2xl font-bold mb-4 shadow-[var(--shadow-glass)]">
+              <div className="mx-auto h-20 w-20 rounded-full btn-brand grid place-items-center text-white font-display text-2xl font-bold mb-4 shadow-[var(--shadow-glass)]">
                 {p.name.split(" ").map((n) => n[0]).join("").slice(0, 2)}
               </div>
               <div className="font-display font-semibold">{p.name}</div>
@@ -214,7 +214,7 @@ export default function About() {
               <h3 className="font-display text-2xl lg:text-3xl font-bold leading-tight">Apply for Internship</h3>
               <p className="text-sm text-muted-foreground mt-2">Start your application in under 2 minutes.</p>
             </div>
-            <div className="h-14 w-14 rounded-2xl bg-[var(--gradient-brand)] grid place-items-center text-white shadow-[var(--shadow-elevated)] group-hover:scale-105 transition">
+            <div className="h-14 w-14 rounded-2xl btn-brand grid place-items-center text-white shadow-[var(--shadow-elevated)] group-hover:scale-105 transition">
               <ArrowRight className="size-5" />
             </div>
           </Link>
@@ -227,7 +227,7 @@ export default function About() {
               <h3 className="font-display text-2xl lg:text-3xl font-bold leading-tight">Contact Support</h3>
               <p className="text-sm text-muted-foreground mt-2">Talk to our delivery and partnership teams.</p>
             </div>
-            <div className="h-14 w-14 rounded-2xl bg-[var(--gradient-brand)] grid place-items-center text-white shadow-[var(--shadow-elevated)] group-hover:scale-105 transition">
+            <div className="h-14 w-14 rounded-2xl btn-brand grid place-items-center text-white shadow-[var(--shadow-elevated)] group-hover:scale-105 transition">
               <MessageCircle className="size-5" />
             </div>
           </Link>
