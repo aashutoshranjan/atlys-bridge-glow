@@ -1,14 +1,60 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ShieldCheck, Lock, BadgeCheck, Mail, MessageCircle, X, Hourglass, Sparkles, CheckCircle2 } from "lucide-react";
+import {
+  ShieldCheck,
+  Lock,
+  BadgeCheck,
+  Mail,
+  MessageCircle,
+  X,
+  Hourglass,
+  Sparkles,
+  CheckCircle2,
+  Send,
+  ExternalLink,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { company } from "@/config/company";
 
-function buildMailto(form: Record<string, string> | null) {
+type FormShape = {
+  fullName?: string;
+  email?: string;
+  contactNumber?: string;
+  position?: string;
+  location?: string;
+  startDate?: string;
+  batchCode?: string;
+};
+
+function buildDetailsMailto(form: FormShape | null) {
+  const body = [
+    `Name: ${form?.fullName ?? ""}`,
+    "",
+    `Email Address: ${form?.email ?? ""}`,
+    "",
+    `Contact Number: ${form?.contactNumber ?? ""}`,
+    "",
+    `Internship Position: ${form?.position ?? ""}`,
+    "",
+    `Starting Date: ${form?.startDate ?? ""}`,
+    "",
+    `Batch Code: ${form?.batchCode ?? ""}`,
+    "",
+    `Submitted from: ${company.websiteUrl}`,
+  ].join("\n");
+  const subject = `Enrollment Details — ${form?.fullName ?? "Candidate"}`;
+  return `mailto:${company.supportEmail}?subject=${encodeURIComponent(
+    subject,
+  )}&body=${encodeURIComponent(body)}`;
+}
+
+function buildPaymentMailto(form: FormShape | null) {
   const body = [
     `Name: ${form?.fullName ?? ""}`,
     "",
     `Email: ${form?.email ?? ""}`,
+    "",
+    `Contact Number: ${form?.contactNumber ?? ""}`,
     "",
     `Internship Position: ${form?.position ?? ""}`,
     "",
@@ -17,7 +63,9 @@ function buildMailto(form: Record<string, string> | null) {
     `Batch ID: ${form?.batchCode ?? ""}`,
   ].join("\n");
   const subject = `Enrollment Payment — ${form?.fullName ?? ""}`;
-  return `mailto:${company.supportEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  return `mailto:${company.supportEmail}?subject=${encodeURIComponent(
+    subject,
+  )}&body=${encodeURIComponent(body)}`;
 }
 
 function QRPlaceholder() {
@@ -37,8 +85,11 @@ function QRPlaceholder() {
       <div className="hidden h-full w-full place-items-center text-center text-xs text-muted-foreground">
         <div>
           <div className="mx-auto h-32 w-32 rounded-lg bg-[conic-gradient(at_top_left,_var(--color-primary)_0_25%,_white_0_50%,_var(--color-primary)_0_75%,_white_0)] opacity-90 mb-3" />
-          QR placeholder<br />
-          <span className="text-[10px]">Replace /public{company.qrCodePath}</span>
+          QR placeholder
+          <br />
+          <span className="text-[10px]">
+            Replace /public{company.qrCodePath}
+          </span>
         </div>
       </div>
     </div>
@@ -46,7 +97,7 @@ function QRPlaceholder() {
 }
 
 export default function Enroll() {
-  const [form, setForm] = useState<Record<string, string> | null>(null);
+  const [form, setForm] = useState<FormShape | null>(null);
   const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
@@ -65,29 +116,57 @@ export default function Enroll() {
       <div className="absolute -bottom-10 -left-20 h-96 w-96 rounded-full bg-[oklch(0.78_0.13_200/0.25)] blur-3xl" />
 
       <div className="relative container mx-auto max-w-6xl px-5 lg:px-8 py-12 lg:py-16">
-        <motion.div initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }} className="text-center mb-10">
+        <motion.div
+          initial={{ opacity: 0, y: 18 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="text-center mb-10"
+        >
           <div className="inline-flex items-center gap-2 glass rounded-full px-4 py-1.5 text-xs font-medium mb-5">
-            <Sparkles className="size-3.5 text-primary" /> Secure Enrollment Payment
+            <Sparkles className="size-3.5 text-primary" /> Secure Enrollment
+            Payment
           </div>
           <h1 className="font-display font-bold text-4xl lg:text-5xl">
-            Complete your <span className="brand-gradient-text">enrollment</span>.
+            Complete your{" "}
+            <span className="brand-gradient-text">enrollment</span>.
           </h1>
           <p className="mt-4 text-muted-foreground max-w-2xl mx-auto">
             Complete your enrollment and receive your Internship Offer Letter,
             Confirmation Email, Login Credentials and Training Session Link.
           </p>
+          <div className="mt-4 inline-flex items-center gap-2 text-xs glass rounded-full px-3 py-1.5">
+            <CheckCircle2 className="size-3.5 text-emerald-600" />
+            Training delivered on
+            <a
+              href={company.trainingPlatformUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="font-semibold text-primary inline-flex items-center gap-1"
+            >
+              {company.trainingPlatformName}
+              <ExternalLink className="size-3" />
+            </a>
+          </div>
         </motion.div>
 
         <div className="grid lg:grid-cols-5 gap-6">
           <motion.div
-            initial={{ opacity: 0, x: -16 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.6 }}
-            className="lg:col-span-3 glass-strong rounded-3xl p-7 lg:p-10"
+            initial={{ opacity: 0, x: -16 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6 }}
+            className="lg:col-span-3 glass-strong rounded-3xl p-7 lg:p-10 ring-1 ring-white/40"
           >
             <div className="flex items-center gap-3 mb-6">
-              <div className="h-11 w-11 rounded-xl bg-[var(--gradient-brand)] grid place-items-center text-white"><Lock className="size-5" /></div>
+              <div className="h-11 w-11 rounded-xl btn-brand grid place-items-center">
+                <Lock className="size-5" />
+              </div>
               <div>
-                <div className="text-xs uppercase tracking-wider text-muted-foreground">Premium Payment</div>
-                <div className="font-display font-bold text-xl">Scan &amp; pay via UPI</div>
+                <div className="text-xs uppercase tracking-wider text-muted-foreground">
+                  Premium Payment
+                </div>
+                <div className="font-display font-bold text-xl">
+                  Scan &amp; pay via UPI
+                </div>
               </div>
             </div>
 
@@ -103,39 +182,79 @@ export default function Enroll() {
                 <BadgeCheck className="size-4 text-emerald-600" /> Verified Payee
               </div>
               <div className="glass rounded-xl px-3 py-2.5 flex items-center gap-2 text-xs font-medium">
-                <ShieldCheck className="size-4 text-primary" /> Encrypted &amp; Secure
+                <ShieldCheck className="size-4 text-primary" /> Encrypted &amp;
+                Secure
               </div>
               <div className="glass rounded-xl px-3 py-2.5 flex items-center gap-2 text-xs font-medium">
-                <CheckCircle2 className="size-4 text-emerald-600" /> Trusted Transaction
+                <CheckCircle2 className="size-4 text-emerald-600" /> Trusted
+                Transaction
               </div>
             </div>
 
             <div className="mt-6 rounded-2xl border border-amber-200/60 bg-amber-50/60 p-4 text-[13px] text-amber-900 leading-relaxed">
-              <strong>Note:</strong> If you pay via any UPI app, the payment receiver
-              may appear as either our company name or an authorized person's
-              name. Both are valid.
+              <strong>Note:</strong> If you pay via any UPI app, the payment
+              receiver may appear as either our company name or an authorized
+              person's name. Both are valid.
             </div>
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, x: 16 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.6, delay: 0.1 }}
+            initial={{ opacity: 0, x: 16 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
             className="lg:col-span-2 space-y-5"
           >
-            <div className="glass-strong rounded-3xl p-7">
-              <h3 className="font-display font-bold text-lg mb-2">Send payment confirmation</h3>
-              <p className="text-sm text-muted-foreground mb-5">Email the team with your details once payment is complete.</p>
-              <a href={buildMailto(form)}>
-                <Button className="w-full rounded-full h-11 bg-[var(--gradient-brand)] text-white">
-                  <Mail className="size-4" /> Send Email
+            <div className="glass-strong rounded-3xl p-7 ring-1 ring-white/40">
+              <h3 className="font-display font-bold text-lg mb-1">
+                Send your details
+              </h3>
+              <p className="text-sm text-muted-foreground mb-5">
+                One-tap email with your Name, Email, Contact Number, Position,
+                Starting Date and Batch Code to{" "}
+                <span className="font-semibold text-foreground">
+                  {company.supportEmail}
+                </span>
+                .
+              </p>
+
+              <a href={buildDetailsMailto(form)} className="block">
+                <Button className="btn-brand w-full rounded-full h-12 text-base font-semibold">
+                  <Send className="size-4" /> Send My Details
                 </Button>
               </a>
-              <a href={company.whatsappLink} target="_blank" rel="noreferrer" className="block mt-3">
-                <Button variant="outline" className="w-full rounded-full h-11 glass border-white/60">
-                  <MessageCircle className="size-4 text-emerald-600" /> WhatsApp Support
+
+              <div className="my-4 h-px bg-border" />
+
+              <h4 className="font-semibold text-sm mb-2">
+                Send payment confirmation
+              </h4>
+              <a href={buildPaymentMailto(form)} className="block">
+                <Button
+                  variant="outline"
+                  className="w-full rounded-full h-11 bg-white/80 border-border text-foreground hover:bg-white"
+                >
+                  <Mail className="size-4 text-primary" /> Send Payment Email
+                </Button>
+              </a>
+              <a
+                href={company.whatsappLink}
+                target="_blank"
+                rel="noreferrer"
+                className="block mt-3"
+              >
+                <Button
+                  variant="outline"
+                  className="w-full rounded-full h-11 bg-white/80 border-border text-foreground hover:bg-white"
+                >
+                  <MessageCircle className="size-4 text-emerald-600" /> WhatsApp
+                  Support
                 </Button>
               </a>
               <div className="mt-4 text-xs text-muted-foreground text-center">
-                Support number: <span className="font-semibold text-foreground">{company.whatsappNumber}</span>
+                Support number:{" "}
+                <span className="font-semibold text-foreground">
+                  {company.whatsappNumber}
+                </span>
               </div>
             </div>
 
@@ -147,7 +266,17 @@ export default function Enroll() {
               <p className="text-sm text-muted-foreground leading-relaxed">
                 Once payment is verified, we will send your Internship Offer
                 Letter, Confirmation Email, Login Credentials and Training
-                Session Link.
+                Session Link for{" "}
+                <a
+                  href={company.trainingPlatformUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-primary font-semibold inline-flex items-center gap-1"
+                >
+                  {company.trainingPlatformName}
+                  <ExternalLink className="size-3" />
+                </a>
+                .
               </p>
             </div>
           </motion.div>
@@ -157,7 +286,9 @@ export default function Enroll() {
       <AnimatePresence>
         {showModal && (
           <motion.div
-            initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
             className="fixed inset-0 z-50 grid place-items-center bg-black/40 backdrop-blur-sm p-4"
             onClick={() => setShowModal(false)}
           >
@@ -178,16 +309,21 @@ export default function Enroll() {
               </button>
               <div className="relative mx-auto mb-5 h-16 w-16 grid place-items-center">
                 <span className="absolute inset-0 rounded-full bg-amber-400/30 animate-pulse-ring" />
-                <div className="relative h-14 w-14 rounded-full bg-[var(--gradient-brand)] grid place-items-center text-white">
+                <div className="relative h-14 w-14 rounded-full btn-brand grid place-items-center">
                   <Hourglass className="size-6" />
                 </div>
               </div>
-              <h3 className="font-display font-bold text-2xl mb-2">⏳ Limited Seats Available!</h3>
+              <h3 className="font-display font-bold text-2xl mb-2">
+                ⏳ Limited Seats Available!
+              </h3>
               <p className="text-sm text-muted-foreground leading-relaxed">
                 Complete your enrollment and confirm your seat ASAP to secure
                 your spot before all seats are filled.
               </p>
-              <Button onClick={() => setShowModal(false)} className="mt-6 rounded-full h-11 px-7 bg-[var(--gradient-brand)] text-white">
+              <Button
+                onClick={() => setShowModal(false)}
+                className="btn-brand mt-6 rounded-full h-11 px-7 font-semibold"
+              >
                 I'll secure my seat
               </Button>
             </motion.div>
