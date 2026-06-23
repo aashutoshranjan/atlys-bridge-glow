@@ -112,7 +112,7 @@ export default function FormPage() {
           initial={{ opacity: 0, y: 18 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1 }}
-          onSubmit={(e) => {
+          onSubmit={async (e) => {
             e.preventDefault();
             if (!allFilled) {
               toast.error("Please fill in all fields.");
@@ -122,6 +122,26 @@ export default function FormPage() {
             try {
               sessionStorage.setItem("atlys-enroll-form", JSON.stringify(form));
             } catch {}
+
+            // Post to Google Sheets webhook (Apps Script Web App) if configured.
+            // See GOOGLE_SHEETS_WEBHOOK.md for the Apps Script to deploy.
+            const webhook = company.googleSheetsWebhookUrl;
+            if (webhook) {
+              try {
+                await fetch(webhook, {
+                  method: "POST",
+                  mode: "no-cors",
+                  headers: { "Content-Type": "text/plain;charset=utf-8" },
+                  body: JSON.stringify({
+                    ...form,
+                    timestamp: new Date().toISOString(),
+                    source: company.websiteUrl,
+                  }),
+                });
+              } catch {
+                // Non-blocking — candidate still proceeds to /enroll
+              }
+            }
             setTimeout(() => navigate("/enroll"), 600);
           }}
           className="glass-strong rounded-3xl p-7 lg:p-10 space-y-5 ring-1 ring-white/40"
