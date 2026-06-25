@@ -26,28 +26,6 @@ type FormShape = {
   batchCode?: string;
 };
 
-function buildDetailsMailto(form: FormShape | null) {
-  const body = [
-    `Name: ${form?.fullName ?? ""}`,
-    "",
-    `Email Address: ${form?.email ?? ""}`,
-    "",
-    `Contact Number: ${form?.contactNumber ?? ""}`,
-    "",
-    `Internship Position: ${form?.position ?? ""}`,
-    "",
-    `Starting Date: ${form?.startDate ?? ""}`,
-    "",
-    `Batch Code: ${form?.batchCode ?? ""}`,
-    "",
-    `Submitted from: ${company.websiteUrl}`,
-  ].join("\n");
-  const subject = `Enrollment Details — ${form?.fullName ?? "Candidate"}`;
-  return `mailto:${company.supportEmail}?subject=${encodeURIComponent(
-    subject,
-  )}&body=${encodeURIComponent(body)}`;
-}
-
 function buildPaymentMailto(form: FormShape | null) {
   const body = [
     `Name: ${form?.fullName ?? ""}`,
@@ -56,17 +34,22 @@ function buildPaymentMailto(form: FormShape | null) {
     "",
     `Contact Number: ${form?.contactNumber ?? ""}`,
     "",
-    `Internship Position: ${form?.position ?? ""}`,
+    `Position: ${form?.position ?? ""}`,
     "",
     `Starting Date: ${form?.startDate ?? ""}`,
     "",
-    `Batch ID: ${form?.batchCode ?? ""}`,
+    `Batch Code: ${form?.batchCode ?? ""}`,
+    "",
+    "I am attaching the payment screenshot for verification.",
+    "",
+    `Submitted from: ${company.websiteUrl}`,
   ].join("\n");
-  const subject = `Enrollment Payment — ${form?.fullName ?? ""}`;
+  const subject = `Enrollment Payment Confirmation — ${form?.fullName ?? "Candidate"}`;
   return `mailto:${company.supportEmail}?subject=${encodeURIComponent(
     subject,
   )}&body=${encodeURIComponent(body)}`;
 }
+
 
 function QRPlaceholder() {
   return (
@@ -131,8 +114,9 @@ export default function Enroll() {
             <span className="brand-gradient-text">enrollment</span>.
           </h1>
           <p className="mt-4 text-muted-foreground max-w-2xl mx-auto">
-            Complete your enrollment and receive your Internship Offer Letter,
-            Confirmation Email, Login Credentials and Training Session Link.
+            Complete your enrollment and receive your Confirmation Email,
+            Login Credentials and Training Session Link along with mentor
+            WhatsApp details.
           </p>
           <div className="mt-4 inline-flex items-center gap-2 text-xs glass rounded-full px-3 py-1.5">
             <CheckCircle2 className="size-3.5 text-emerald-600" />
