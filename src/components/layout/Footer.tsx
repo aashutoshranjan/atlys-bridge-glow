@@ -89,7 +89,7 @@ export default function Footer() {
             href={company.unsubscribeFormUrl}
             target="_blank"
             rel="noreferrer"
-            className="inline-flex items-center justify-center gap-2 w-full rounded-full h-11 px-5 text-sm font-semibold btn-brand"
+            className="inline-flex items-center justify-center gap-1.5 w-auto rounded-full h-8 px-4 text-xs font-medium btn-brand"
           >
             <Mail className="size-4" /> Unsubscribe & Report
           </a>
