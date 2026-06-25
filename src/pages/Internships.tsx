@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { GraduationCap, Award, Clock, BookOpen, ArrowRight, Search } from "lucide-react";
+import { GraduationCap, Award, Clock, BookOpen, ArrowRight, Search, BadgeCheck } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useState } from "react";
@@ -95,8 +95,9 @@ export default function Internships() {
               <p className="text-sm text-muted-foreground leading-relaxed mb-5">{it.desc}</p>
               <div className="space-y-2 text-xs text-foreground/75 mb-6">
                 <div className="flex items-center gap-2"><BookOpen className="size-3.5 text-primary" /> {it.eligibility}</div>
-                <div className="flex items-center gap-2"><Clock className="size-3.5 text-primary" /> 8–12 weeks · Flexible</div>
-                <div className="flex items-center gap-2"><Award className="size-3.5 text-primary" /> Certificate of Completion</div>
+                <div className="flex items-center gap-2"><Clock className="size-3.5 text-primary" /> 4 weeks · All Programs</div>
+                <div className="flex items-center gap-2"><Award className="size-3.5 text-primary" /> Internship Certificate + Letter of Recommendation</div>
+                <div className="flex items-center gap-2"><BadgeCheck className="size-3.5 text-primary" /> Stipend Provided</div>
               </div>
               <Button asChild className="mt-auto rounded-full btn-brand text-white">
                 <Link to="/form">Apply Now <ArrowRight className="size-4" /></Link>

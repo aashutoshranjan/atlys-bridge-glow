@@ -237,37 +237,6 @@ export default function FormPage() {
             )}
           </Button>
 
-          <div className="relative my-2 flex items-center gap-3 text-[11px] uppercase tracking-wider text-muted-foreground">
-            <div className="h-px flex-1 bg-border" /> or send details directly
-            <div className="h-px flex-1 bg-border" />
-          </div>
-
-          <a
-            href={allFilled ? buildDetailsMailto(form) : undefined}
-            onClick={(e) => {
-              if (!allFilled) {
-                e.preventDefault();
-                toast.error("Please fill all fields before sending details.");
-              }
-            }}
-            className={`flex items-center justify-center gap-2 w-full rounded-full h-12 text-base font-semibold transition ${
-              allFilled
-                ? "btn-brand hover:brightness-110"
-                : "bg-muted text-muted-foreground cursor-not-allowed"
-            }`}
-          >
-            <Send className="size-4" /> Send My Details to{" "}
-            <span className="hidden sm:inline">{company.supportEmail}</span>
-            <span className="sm:hidden">Support</span>
-          </a>
-
-          <p className="text-xs text-center text-muted-foreground">
-            Opens your email app with all details pre-filled to{" "}
-            <span className="font-semibold text-foreground">
-              {company.supportEmail}
-            </span>
-            .
-          </p>
 
           <div className="flex flex-wrap items-center justify-center gap-5 pt-2 text-xs text-muted-foreground">
             <span className="inline-flex items-center gap-1.5">

@@ -26,28 +26,6 @@ type FormShape = {
   batchCode?: string;
 };
 
-function buildDetailsMailto(form: FormShape | null) {
-  const body = [
-    `Name: ${form?.fullName ?? ""}`,
-    "",
-    `Email Address: ${form?.email ?? ""}`,
-    "",
-    `Contact Number: ${form?.contactNumber ?? ""}`,
-    "",
-    `Internship Position: ${form?.position ?? ""}`,
-    "",
-    `Starting Date: ${form?.startDate ?? ""}`,
-    "",
-    `Batch Code: ${form?.batchCode ?? ""}`,
-    "",
-    `Submitted from: ${company.websiteUrl}`,
-  ].join("\n");
-  const subject = `Enrollment Details — ${form?.fullName ?? "Candidate"}`;
-  return `mailto:${company.supportEmail}?subject=${encodeURIComponent(
-    subject,
-  )}&body=${encodeURIComponent(body)}`;
-}
-
 function buildPaymentMailto(form: FormShape | null) {
   const body = [
     `Name: ${form?.fullName ?? ""}`,
@@ -56,17 +34,22 @@ function buildPaymentMailto(form: FormShape | null) {
     "",
     `Contact Number: ${form?.contactNumber ?? ""}`,
     "",
-    `Internship Position: ${form?.position ?? ""}`,
+    `Position: ${form?.position ?? ""}`,
     "",
     `Starting Date: ${form?.startDate ?? ""}`,
     "",
-    `Batch ID: ${form?.batchCode ?? ""}`,
+    `Batch Code: ${form?.batchCode ?? ""}`,
+    "",
+    "I am attaching the payment screenshot for verification.",
+    "",
+    `Submitted from: ${company.websiteUrl}`,
   ].join("\n");
-  const subject = `Enrollment Payment — ${form?.fullName ?? ""}`;
+  const subject = `Enrollment Payment Confirmation — ${form?.fullName ?? "Candidate"}`;
   return `mailto:${company.supportEmail}?subject=${encodeURIComponent(
     subject,
   )}&body=${encodeURIComponent(body)}`;
 }
+
 
 function QRPlaceholder() {
   return (
@@ -131,8 +114,9 @@ export default function Enroll() {
             <span className="brand-gradient-text">enrollment</span>.
           </h1>
           <p className="mt-4 text-muted-foreground max-w-2xl mx-auto">
-            Complete your enrollment and receive your Internship Offer Letter,
-            Confirmation Email, Login Credentials and Training Session Link.
+            Complete your enrollment and receive your Confirmation Email,
+            Login Credentials and Training Session Link along with mentor
+            WhatsApp details.
           </p>
           <div className="mt-4 inline-flex items-center gap-2 text-xs glass rounded-full px-3 py-1.5">
             <CheckCircle2 className="size-3.5 text-emerald-600" />
@@ -206,36 +190,24 @@ export default function Enroll() {
           >
             <div className="glass-strong rounded-3xl p-7 ring-1 ring-white/40">
               <h3 className="font-display font-bold text-lg mb-1">
-                Send your details
+                Send payment confirmation
               </h3>
               <p className="text-sm text-muted-foreground mb-5">
-                One-tap email with your Name, Email, Contact Number, Position,
-                Starting Date and Batch Code to{" "}
+                One-tap email to{" "}
                 <span className="font-semibold text-foreground">
                   {company.supportEmail}
-                </span>
-                .
+                </span>{" "}
+                pre-filled with your Name, Email, Contact Number, Position,
+                Starting Date and Batch Code. Please attach your payment
+                screenshot before sending.
               </p>
 
-              <a href={buildDetailsMailto(form)} className="block">
-                <Button className="btn-brand w-full rounded-full h-12 text-base font-semibold">
-                  <Send className="size-4" /> Send My Details
-                </Button>
-              </a>
-
-              <div className="my-4 h-px bg-border" />
-
-              <h4 className="font-semibold text-sm mb-2">
-                Send payment confirmation
-              </h4>
               <a href={buildPaymentMailto(form)} className="block">
-                <Button
-                  variant="outline"
-                  className="w-full rounded-full h-11 bg-white/80 border-border text-foreground hover:bg-white"
-                >
-                  <Mail className="size-4 text-primary" /> Send Payment Email
+                <Button className="btn-brand w-full rounded-full h-12 text-base font-semibold">
+                  <Send className="size-4" /> Send Payment Email
                 </Button>
               </a>
+
               <a
                 href={company.whatsappLink}
                 target="_blank"
@@ -250,13 +222,8 @@ export default function Enroll() {
                   Support
                 </Button>
               </a>
-              <div className="mt-4 text-xs text-muted-foreground text-center">
-                Support number:{" "}
-                <span className="font-semibold text-foreground">
-                  {company.whatsappNumber}
-                </span>
-              </div>
             </div>
+
 
             <div className="glass rounded-3xl p-7">
               <div className="flex items-center gap-3 mb-3">
@@ -264,9 +231,9 @@ export default function Enroll() {
                 <h3 className="font-display font-bold">After verification</h3>
               </div>
               <p className="text-sm text-muted-foreground leading-relaxed">
-                Once payment is verified, we will send your Internship Offer
-                Letter, Confirmation Email, Login Credentials and Training
-                Session Link for{" "}
+                Once payment is verified, we will send your Confirmation Email,
+                Login Credentials and Training Session Link along with mentor
+                WhatsApp details for{" "}
                 <a
                   href={company.trainingPlatformUrl}
                   target="_blank"
