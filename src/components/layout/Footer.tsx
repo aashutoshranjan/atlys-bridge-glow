@@ -53,7 +53,8 @@ export default function Footer() {
               <Mail className="size-4 text-primary" /> {company.supportEmail}
             </a>
             <div className="flex gap-2.5">
-              <Phone className="size-4 text-primary" /> {company.phoneNumber}
+              <Phone className="size-4 text-primary" />
+              <span>WhatsApp Only: {company.phoneNumber}</span>
             </div>
 
           </div>
