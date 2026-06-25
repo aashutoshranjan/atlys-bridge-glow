@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Linkedin, MapPin, Mail, Phone, MessageCircle, ExternalLink } from "lucide-react";
+import { Linkedin, MapPin, Mail, Phone, ExternalLink } from "lucide-react";
 import Logo from "@/components/Logo";
 import { company } from "@/config/company";
 
