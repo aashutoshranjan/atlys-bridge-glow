@@ -103,15 +103,6 @@ export default function Footer() {
             >
               <Linkedin className="size-4" /> LinkedIn
             </a>
-            <a
-              href={company.whatsappLink}
-              target="_blank"
-              rel="noreferrer"
-              aria-label="WhatsApp"
-              className="inline-flex items-center gap-2 h-10 px-4 rounded-full text-sm font-medium bg-emerald-500 text-white hover:brightness-110 transition shadow-[var(--shadow-glass)]"
-            >
-              <MessageCircle className="size-4" /> WhatsApp
-            </a>
           </div>
         </div>
       </div>
