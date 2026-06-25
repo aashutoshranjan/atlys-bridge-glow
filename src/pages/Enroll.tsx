@@ -231,9 +231,9 @@ export default function Enroll() {
                 <h3 className="font-display font-bold">After verification</h3>
               </div>
               <p className="text-sm text-muted-foreground leading-relaxed">
-                Once payment is verified, we will send your Internship Offer
-                Letter, Confirmation Email, Login Credentials and Training
-                Session Link for{" "}
+                Once payment is verified, we will send your Confirmation Email,
+                Login Credentials and Training Session Link along with mentor
+                WhatsApp details for{" "}
                 <a
                   href={company.trainingPlatformUrl}
                   target="_blank"
