@@ -190,36 +190,24 @@ export default function Enroll() {
           >
             <div className="glass-strong rounded-3xl p-7 ring-1 ring-white/40">
               <h3 className="font-display font-bold text-lg mb-1">
-                Send your details
+                Send payment confirmation
               </h3>
               <p className="text-sm text-muted-foreground mb-5">
-                One-tap email with your Name, Email, Contact Number, Position,
-                Starting Date and Batch Code to{" "}
+                One-tap email to{" "}
                 <span className="font-semibold text-foreground">
                   {company.supportEmail}
-                </span>
-                .
+                </span>{" "}
+                pre-filled with your Name, Email, Contact Number, Position,
+                Starting Date and Batch Code. Please attach your payment
+                screenshot before sending.
               </p>
 
-              <a href={buildDetailsMailto(form)} className="block">
-                <Button className="btn-brand w-full rounded-full h-12 text-base font-semibold">
-                  <Send className="size-4" /> Send My Details
-                </Button>
-              </a>
-
-              <div className="my-4 h-px bg-border" />
-
-              <h4 className="font-semibold text-sm mb-2">
-                Send payment confirmation
-              </h4>
               <a href={buildPaymentMailto(form)} className="block">
-                <Button
-                  variant="outline"
-                  className="w-full rounded-full h-11 bg-white/80 border-border text-foreground hover:bg-white"
-                >
-                  <Mail className="size-4 text-primary" /> Send Payment Email
+                <Button className="btn-brand w-full rounded-full h-12 text-base font-semibold">
+                  <Send className="size-4" /> Send Payment Email
                 </Button>
               </a>
+
               <a
                 href={company.whatsappLink}
                 target="_blank"
@@ -234,13 +222,8 @@ export default function Enroll() {
                   Support
                 </Button>
               </a>
-              <div className="mt-4 text-xs text-muted-foreground text-center">
-                Support number:{" "}
-                <span className="font-semibold text-foreground">
-                  {company.whatsappNumber}
-                </span>
-              </div>
             </div>
+
 
             <div className="glass rounded-3xl p-7">
               <div className="flex items-center gap-3 mb-3">

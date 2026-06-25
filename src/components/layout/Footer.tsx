@@ -52,18 +52,10 @@ export default function Footer() {
             >
               <Mail className="size-4 text-primary" /> {company.supportEmail}
             </a>
-            <a
-              href={company.whatsappLink}
-              target="_blank"
-              rel="noreferrer"
-              className="flex gap-2.5 hover:text-foreground transition"
-            >
-              <MessageCircle className="size-4 text-primary" /> WhatsApp Support:{" "}
-              {company.whatsappNumber}
-            </a>
             <div className="flex gap-2.5">
               <Phone className="size-4 text-primary" /> {company.phoneNumber}
             </div>
+
           </div>
         </div>
 
