@@ -23,27 +23,6 @@ type FormState = {
   startDate: string;
 };
 
-function buildDetailsMailto(form: FormState) {
-  const body = [
-    `Name: ${form.fullName}`,
-    "",
-    `Email Address: ${form.email}`,
-    "",
-    `Contact Number: ${form.contactNumber}`,
-    "",
-    `Internship Position: ${form.position}`,
-    "",
-    `Current Location: ${form.location}`,
-    "",
-    `Starting Date: ${form.startDate}`,
-    "",
-    `Submitted from: ${company.websiteUrl}`,
-  ].join("\n");
-  const subject = `Internship Application — ${form.fullName || "New applicant"}`;
-  return `mailto:${company.supportEmail}?subject=${encodeURIComponent(
-    subject,
-  )}&body=${encodeURIComponent(body)}`;
-}
 
 export default function FormPage() {
   const navigate = useNavigate();
