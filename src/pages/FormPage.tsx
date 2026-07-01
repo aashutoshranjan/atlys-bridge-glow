@@ -40,8 +40,6 @@ function buildDetailsMailto(form: FormState) {
     "",
     `Starting Date: ${form.startDate}`,
     "",
-    `Batch Code: ${form.batchCode}`,
-    "",
     `Submitted from: ${company.websiteUrl}`,
   ].join("\n");
   const subject = `Internship Application — ${form.fullName || "New applicant"}`;
