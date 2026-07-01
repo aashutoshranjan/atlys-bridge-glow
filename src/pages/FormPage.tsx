@@ -93,20 +93,8 @@ export default function FormPage() {
             Takes under 2 minutes. We'll guide you through the next step right
             away.
           </p>
-          <div className="mt-4 inline-flex items-center gap-2 text-xs glass rounded-full px-3 py-1.5">
-            <CheckCircle2 className="size-3.5 text-emerald-600" />
-            Training delivered on
-            <a
-              href={company.trainingPlatformUrl}
-              target="_blank"
-              rel="noreferrer"
-              className="font-semibold text-primary inline-flex items-center gap-1"
-            >
-              {company.trainingPlatformName}
-              <ExternalLink className="size-3" />
-            </a>
-          </div>
         </motion.div>
+
 
         <motion.form
           initial={{ opacity: 0, y: 18 }}
