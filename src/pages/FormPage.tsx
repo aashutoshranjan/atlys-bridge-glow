@@ -7,9 +7,6 @@ import {
   ShieldCheck,
   Lock,
   Mail,
-  ExternalLink,
-  CheckCircle2,
-  Send,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -24,32 +21,8 @@ type FormState = {
   position: string;
   location: string;
   startDate: string;
-  batchCode: string;
 };
 
-function buildDetailsMailto(form: FormState) {
-  const body = [
-    `Name: ${form.fullName}`,
-    "",
-    `Email Address: ${form.email}`,
-    "",
-    `Contact Number: ${form.contactNumber}`,
-    "",
-    `Internship Position: ${form.position}`,
-    "",
-    `Current Location: ${form.location}`,
-    "",
-    `Starting Date: ${form.startDate}`,
-    "",
-    `Batch Code: ${form.batchCode}`,
-    "",
-    `Submitted from: ${company.websiteUrl}`,
-  ].join("\n");
-  const subject = `Internship Application — ${form.fullName || "New applicant"}`;
-  return `mailto:${company.supportEmail}?subject=${encodeURIComponent(
-    subject,
-  )}&body=${encodeURIComponent(body)}`;
-}
 
 export default function FormPage() {
   const navigate = useNavigate();
@@ -61,7 +34,6 @@ export default function FormPage() {
     position: "",
     location: "",
     startDate: "",
-    batchCode: "",
   });
 
   const update = (k: keyof FormState, v: string) =>
@@ -93,20 +65,8 @@ export default function FormPage() {
             Takes under 2 minutes. We'll guide you through the next step right
             away.
           </p>
-          <div className="mt-4 inline-flex items-center gap-2 text-xs glass rounded-full px-3 py-1.5">
-            <CheckCircle2 className="size-3.5 text-emerald-600" />
-            Training delivered on
-            <a
-              href={company.trainingPlatformUrl}
-              target="_blank"
-              rel="noreferrer"
-              className="font-semibold text-primary inline-flex items-center gap-1"
-            >
-              {company.trainingPlatformName}
-              <ExternalLink className="size-3" />
-            </a>
-          </div>
         </motion.div>
+
 
         <motion.form
           initial={{ opacity: 0, y: 18 }}
@@ -207,18 +167,6 @@ export default function FormPage() {
                 value={form.startDate}
                 onChange={(e) => update("startDate", e.target.value)}
                 className="bg-white/80 border-white/70 h-11"
-              />
-            </div>
-            <div className="space-y-2 sm:col-span-2">
-              <Label htmlFor="batchCode">
-                Batch Code (Mentioned in Welcome Letter)
-              </Label>
-              <Input
-                id="batchCode"
-                value={form.batchCode}
-                onChange={(e) => update("batchCode", e.target.value)}
-                className="bg-white/80 border-white/70 h-11"
-                placeholder="e.g. ATL-2026-A"
               />
             </div>
           </div>

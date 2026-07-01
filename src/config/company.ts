@@ -19,11 +19,11 @@ export const company = {
   logo: "/atlys-logo.png",
 
   // --- Contact ---
-  supportEmail: "support@lmstraineeprogram.in",
-  hrEmail: "support@lmstraineeprogram.in",
-  phoneNumber: "+91 9936667124",
-  whatsappNumber: "+91 9936667124",
-  whatsappLink: "https://wa.me/919936667124",
+  supportEmail: "support@atlysbridge.com",
+  hrEmail: "support@atlysbridge.com",
+  phoneNumber: "+91 90062 47022",
+  whatsappNumber: "+91 90062 47022",
+  whatsappLink: "https://wa.me/919006247022",
 
   // --- Address ---
   officeAddress: {

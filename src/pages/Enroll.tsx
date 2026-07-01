@@ -4,52 +4,15 @@ import {
   ShieldCheck,
   Lock,
   BadgeCheck,
-  Mail,
-  MessageCircle,
   X,
   Hourglass,
   Sparkles,
   CheckCircle2,
-  Send,
   ExternalLink,
+  Megaphone,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { company } from "@/config/company";
-
-type FormShape = {
-  fullName?: string;
-  email?: string;
-  contactNumber?: string;
-  position?: string;
-  location?: string;
-  startDate?: string;
-  batchCode?: string;
-};
-
-function buildPaymentMailto(form: FormShape | null) {
-  const body = [
-    `Name: ${form?.fullName ?? ""}`,
-    "",
-    `Email: ${form?.email ?? ""}`,
-    "",
-    `Contact Number: ${form?.contactNumber ?? ""}`,
-    "",
-    `Position: ${form?.position ?? ""}`,
-    "",
-    `Starting Date: ${form?.startDate ?? ""}`,
-    "",
-    `Batch Code: ${form?.batchCode ?? ""}`,
-    "",
-    "I am attaching the payment screenshot for verification.",
-    "",
-    `Submitted from: ${company.websiteUrl}`,
-  ].join("\n");
-  const subject = `Enrollment Payment Confirmation — ${form?.fullName ?? "Candidate"}`;
-  return `mailto:${company.supportEmail}?subject=${encodeURIComponent(
-    subject,
-  )}&body=${encodeURIComponent(body)}`;
-}
-
 
 function QRPlaceholder() {
   return (
@@ -80,14 +43,9 @@ function QRPlaceholder() {
 }
 
 export default function Enroll() {
-  const [form, setForm] = useState<FormShape | null>(null);
   const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
-    try {
-      const raw = sessionStorage.getItem("atlys-enroll-form");
-      if (raw) setForm(JSON.parse(raw));
-    } catch {}
     const t = setTimeout(() => setShowModal(true), 2500);
     return () => clearTimeout(t);
   }, []);
@@ -118,19 +76,6 @@ export default function Enroll() {
             Login Credentials and Training Session Link along with mentor
             WhatsApp details.
           </p>
-          <div className="mt-4 inline-flex items-center gap-2 text-xs glass rounded-full px-3 py-1.5">
-            <CheckCircle2 className="size-3.5 text-emerald-600" />
-            Training delivered on
-            <a
-              href={company.trainingPlatformUrl}
-              target="_blank"
-              rel="noreferrer"
-              className="font-semibold text-primary inline-flex items-center gap-1"
-            >
-              {company.trainingPlatformName}
-              <ExternalLink className="size-3" />
-            </a>
-          </div>
         </motion.div>
 
         <div className="grid lg:grid-cols-5 gap-6">
@@ -161,7 +106,13 @@ export default function Enroll() {
 
             <QRPlaceholder />
 
-            <div className="mt-6 grid sm:grid-cols-3 gap-2.5">
+            <div className="mt-6 rounded-2xl border border-amber-200/60 bg-amber-50/60 p-4 text-[13px] text-amber-900 leading-relaxed">
+              <strong>Note:</strong> If you pay via any UPI app, the payment
+              receiver may appear as either our company name or an authorized
+              person's name. Both are valid.
+            </div>
+
+            <div className="mt-4 grid sm:grid-cols-3 gap-2.5">
               <div className="glass rounded-xl px-3 py-2.5 flex items-center gap-2 text-xs font-medium">
                 <BadgeCheck className="size-4 text-emerald-600" /> Verified Payee
               </div>
@@ -174,77 +125,121 @@ export default function Enroll() {
                 Transaction
               </div>
             </div>
-
-            <div className="mt-6 rounded-2xl border border-amber-200/60 bg-amber-50/60 p-4 text-[13px] text-amber-900 leading-relaxed">
-              <strong>Note:</strong> If you pay via any UPI app, the payment
-              receiver may appear as either our company name or an authorized
-              person's name. Both are valid.
-            </div>
           </motion.div>
 
           <motion.div
             initial={{ opacity: 0, x: 16 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="lg:col-span-2 space-y-5"
+            className="lg:col-span-2"
           >
-            <div className="glass-strong rounded-3xl p-7 ring-1 ring-white/40">
-              <h3 className="font-display font-bold text-lg mb-1">
-                Send payment confirmation
-              </h3>
-              <p className="text-sm text-muted-foreground mb-5">
-                One-tap email to{" "}
-                <span className="font-semibold text-foreground">
-                  {company.supportEmail}
-                </span>{" "}
-                pre-filled with your Name, Email, Contact Number, Position,
-                Starting Date and Batch Code. Please attach your payment
-                screenshot before sending.
-              </p>
-
-              <a href={buildPaymentMailto(form)} className="block">
-                <Button className="btn-brand w-full rounded-full h-12 text-base font-semibold">
-                  <Send className="size-4" /> Send Payment Email
-                </Button>
-              </a>
-
-              <a
-                href={company.whatsappLink}
-                target="_blank"
-                rel="noreferrer"
-                className="block mt-3"
-              >
-                <Button
-                  variant="outline"
-                  className="w-full rounded-full h-11 bg-white/80 border-border text-foreground hover:bg-white"
-                >
-                  <MessageCircle className="size-4 text-emerald-600" /> WhatsApp
-                  Support
-                </Button>
-              </a>
-            </div>
-
-
-            <div className="glass rounded-3xl p-7">
-              <div className="flex items-center gap-3 mb-3">
-                <BadgeCheck className="size-5 text-emerald-600" />
-                <h3 className="font-display font-bold">After verification</h3>
+            <div className="glass-strong rounded-3xl p-7 ring-1 ring-white/40 space-y-5">
+              <div className="flex items-center gap-3">
+                <div className="h-10 w-10 rounded-xl btn-brand grid place-items-center">
+                  <Megaphone className="size-5" />
+                </div>
+                <h3 className="font-display font-bold text-lg leading-tight">
+                  Important Notice – Enrollment Confirmation
+                </h3>
               </div>
+
+              <div>
+                <div className="font-semibold text-foreground text-sm mb-1">
+                  Confirm Your Participation:
+                </div>
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  To secure your place in the program, please complete the
+                  enrolment process by paying the internship enrollment fee as
+                  specified in your Welcome Letter.
+                </p>
+              </div>
+
               <p className="text-sm text-muted-foreground leading-relaxed">
-                Once payment is verified, we will send your Confirmation Email,
-                Login Credentials and Training Session Link along with mentor
-                WhatsApp details for{" "}
+                After completion of your enrollment process, please share the
+                required details as mentioned and send your payment screenshot
+                to our support team at{" "}
                 <a
-                  href={company.trainingPlatformUrl}
+                  href={`mailto:${company.supportEmail}`}
+                  className="font-semibold text-primary hover:underline"
+                >
+                  {company.supportEmail}
+                </a>{" "}
+                or on WhatsApp{" "}
+                <a
+                  href={company.whatsappLink}
                   target="_blank"
                   rel="noreferrer"
-                  className="text-primary font-semibold inline-flex items-center gap-1"
+                  className="font-semibold text-primary hover:underline"
                 >
-                  {company.trainingPlatformName}
-                  <ExternalLink className="size-3" />
+                  ({company.whatsappNumber})
                 </a>
                 .
               </p>
+
+              <div className="rounded-2xl border border-primary/20 bg-primary/5 p-4 text-sm text-foreground leading-relaxed">
+                Sending these details via WhatsApp is{" "}
+                <strong>mandatory</strong>. Once we receive your details, we
+                will proceed with sending your confirmation email, login
+                credentials, and the WhatsApp number of your dedicated mentor.
+              </div>
+
+              <div>
+                <div className="text-xs uppercase tracking-wider text-muted-foreground mb-2">
+                  Details to share
+                </div>
+                <ul className="text-sm text-foreground space-y-1.5">
+                  <li className="flex items-start gap-2">
+                    <CheckCircle2 className="size-4 text-emerald-600 mt-0.5 shrink-0" />
+                    Payment Screenshot
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <CheckCircle2 className="size-4 text-emerald-600 mt-0.5 shrink-0" />
+                    Full Name
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <CheckCircle2 className="size-4 text-emerald-600 mt-0.5 shrink-0" />
+                    Email ID
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <CheckCircle2 className="size-4 text-emerald-600 mt-0.5 shrink-0" />
+                    Contact Number
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <CheckCircle2 className="size-4 text-emerald-600 mt-0.5 shrink-0" />
+                    Internship Position Applied For
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <CheckCircle2 className="size-4 text-emerald-600 mt-0.5 shrink-0" />
+                    Cohort Date
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <CheckCircle2 className="size-4 text-emerald-600 mt-0.5 shrink-0" />
+                    Batch Code (Mentioned in Welcome Letter)
+                  </li>
+                </ul>
+              </div>
+
+              <div className="rounded-2xl border border-amber-200/60 bg-amber-50/60 p-4 text-[13px] text-amber-900 leading-relaxed">
+                <strong>Note:</strong> The confirmation email will be shared
+                within one hour, while the login credentials will be delivered
+                by End of Day (Till 10:00 PM today).
+              </div>
+
+              <div className="pt-1">
+                <p className="text-sm text-muted-foreground leading-relaxed mb-3">
+                  For any concerns or unsubscribe requests, please submit your
+                  report only through our official Google Form.
+                </p>
+                <a
+                  href={company.unsubscribeFormUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center gap-1.5 rounded-full h-9 px-4 text-xs font-medium btn-brand"
+                >
+                  <ExternalLink className="size-3.5" /> Click here to
+                  Unsubscribe &amp; Report
+                </a>
+              </div>
             </div>
           </motion.div>
         </div>

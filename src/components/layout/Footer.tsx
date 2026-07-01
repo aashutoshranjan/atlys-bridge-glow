@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Linkedin, MapPin, Mail, Phone, ExternalLink } from "lucide-react";
+import { Linkedin, MapPin, Mail, Phone } from "lucide-react";
 import Logo from "@/components/Logo";
 import { company } from "@/config/company";
 
@@ -22,22 +22,6 @@ export default function Footer() {
           <p className="text-sm text-muted-foreground max-w-sm leading-relaxed">
             {company.footerText}
           </p>
-          <div className="rounded-2xl glass p-4 text-sm">
-            <div className="text-xs uppercase tracking-wider text-muted-foreground mb-1">
-              Our Training & Internship Platform
-            </div>
-            <a
-              href={company.trainingPlatformUrl}
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center gap-1.5 font-semibold text-primary hover:underline"
-            >
-              {company.trainingPlatformName} <ExternalLink className="size-3.5" />
-            </a>
-            <p className="text-xs text-muted-foreground mt-1.5 leading-relaxed">
-              {company.trainingPlatformLabel}
-            </p>
-          </div>
           <div className="space-y-2.5 text-sm text-muted-foreground">
             <div className="flex gap-2.5">
               <MapPin className="size-4 mt-0.5 text-primary shrink-0" />
