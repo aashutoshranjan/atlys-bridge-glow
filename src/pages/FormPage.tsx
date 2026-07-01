@@ -24,7 +24,6 @@ type FormState = {
   position: string;
   location: string;
   startDate: string;
-  batchCode: string;
 };
 
 function buildDetailsMailto(form: FormState) {
