@@ -58,7 +58,6 @@ export default function FormPage() {
     position: "",
     location: "",
     startDate: "",
-    batchCode: "",
   });
 
   const update = (k: keyof FormState, v: string) =>
