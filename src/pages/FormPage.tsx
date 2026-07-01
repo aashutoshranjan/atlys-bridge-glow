@@ -197,18 +197,6 @@ export default function FormPage() {
                 className="bg-white/80 border-white/70 h-11"
               />
             </div>
-            <div className="space-y-2 sm:col-span-2">
-              <Label htmlFor="batchCode">
-                Batch Code (Mentioned in Welcome Letter)
-              </Label>
-              <Input
-                id="batchCode"
-                value={form.batchCode}
-                onChange={(e) => update("batchCode", e.target.value)}
-                className="bg-white/80 border-white/70 h-11"
-                placeholder="e.g. ATL-2026-A"
-              />
-            </div>
           </div>
 
           <Button
