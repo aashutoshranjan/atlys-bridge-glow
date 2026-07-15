@@ -163,24 +163,19 @@ export default function Enroll() {
                   className="font-semibold text-primary hover:underline"
                 >
                   {company.supportEmail}
-                </a>{" "}
-                or on WhatsApp{" "}
-                <a
-                  href={company.whatsappLink}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="font-semibold text-primary hover:underline"
-                >
-                  ({company.whatsappNumber})
                 </a>
-                .
+                .{" "}
+                <strong>
+                  If you have any queries you can write us to email. Sending
+                  details on email is mandatory.
+                </strong>
               </p>
 
               <div className="rounded-2xl border border-primary/20 bg-primary/5 p-4 text-sm text-foreground leading-relaxed">
-                Sending these details via WhatsApp is{" "}
-                <strong>mandatory</strong>. Once we receive your details, we
-                will proceed with sending your confirmation email, login
-                credentials, and the WhatsApp number of your dedicated mentor.
+                <strong>Sending these details on email is mandatory.</strong>{" "}
+                Once we receive your details, we will proceed with sending your
+                confirmation email, login credentials, and the WhatsApp number
+                of your dedicated mentor.
               </div>
 
               <div>
@@ -222,7 +217,8 @@ export default function Enroll() {
               <div className="rounded-2xl border border-amber-200/60 bg-amber-50/60 p-4 text-[13px] text-amber-900 leading-relaxed">
                 <strong>Note:</strong> The confirmation email will be shared
                 within one hour, while the login credentials will be delivered
-                by End of Day (Till 10:00 PM today).
+                by End of Day (Till 10:00 PM today).{" "}
+                <strong>We will also give you offer letter.</strong>
               </div>
 
               <div className="pt-1">

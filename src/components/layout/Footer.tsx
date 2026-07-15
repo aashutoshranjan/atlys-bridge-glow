@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Linkedin, MapPin, Mail, Phone } from "lucide-react";
+import { Linkedin, MapPin, Mail } from "lucide-react";
 import Logo from "@/components/Logo";
 import { company } from "@/config/company";
 
@@ -36,10 +36,6 @@ export default function Footer() {
             >
               <Mail className="size-4 text-primary" /> {company.supportEmail}
             </a>
-            <div className="flex gap-2.5">
-              <Phone className="size-4 text-primary" />
-              <span>WhatsApp Only: {company.phoneNumber}</span>
-            </div>
 
           </div>
         </div>
