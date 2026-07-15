@@ -74,7 +74,11 @@ export default function Enroll() {
           <p className="mt-4 text-muted-foreground max-w-2xl mx-auto">
             Complete your enrollment and receive your Confirmation Email,
             Login Credentials and Training Session Link along with mentor
-            WhatsApp details.
+            WhatsApp details.{" "}
+            <strong>
+              We will provide Internship Offer Letter after the payment of
+              enrollment.
+            </strong>
           </p>
         </motion.div>
 
