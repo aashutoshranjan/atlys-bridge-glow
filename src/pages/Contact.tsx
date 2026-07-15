@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { MapPin, Mail, Phone, MessageCircle, Linkedin, Send, Sparkles } from "lucide-react";
+import { MapPin, Mail, Linkedin, Send, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -60,21 +60,6 @@ export default function Contact() {
             </div>
           </a>
 
-          <a href={company.whatsappLink} target="_blank" rel="noreferrer" className="glass rounded-2xl p-6 flex items-center gap-4 hover:-translate-y-1 transition">
-            <div className="h-11 w-11 rounded-xl btn-brand grid place-items-center text-white shrink-0"><MessageCircle className="size-5" /></div>
-            <div>
-              <div className="text-xs uppercase tracking-wider text-muted-foreground">WhatsApp support</div>
-              <div className="font-semibold">{company.whatsappNumber}</div>
-            </div>
-          </a>
-
-          <div className="glass rounded-2xl p-6 flex items-center gap-4">
-            <div className="h-11 w-11 rounded-xl btn-brand grid place-items-center text-white shrink-0"><Phone className="size-5" /></div>
-            <div>
-              <div className="text-xs uppercase tracking-wider text-muted-foreground">Phone</div>
-              <div className="font-semibold">{company.phoneNumber}</div>
-            </div>
-          </div>
 
           <a href={company.linkedinUrl} target="_blank" rel="noreferrer" className="glass rounded-2xl p-6 flex items-center gap-4 hover:-translate-y-1 transition">
             <div className="h-11 w-11 rounded-xl btn-brand grid place-items-center text-white shrink-0"><Linkedin className="size-5" /></div>
