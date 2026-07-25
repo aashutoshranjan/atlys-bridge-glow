@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Linkedin, MapPin, Mail } from "lucide-react";
+import { Linkedin, MapPin, Mail, MessageCircle } from "lucide-react";
 import Logo from "@/components/Logo";
 import { company } from "@/config/company";
 
@@ -36,7 +36,15 @@ export default function Footer() {
             >
               <Mail className="size-4 text-primary" /> {company.supportEmail}
             </a>
-
+            <a
+              href={company.whatsappLink}
+              target="_blank"
+              rel="noreferrer"
+              className="flex gap-2.5 hover:text-foreground transition"
+            >
+              <MessageCircle className="size-4 text-primary" /> WhatsApp{" "}
+              {company.whatsappNumber}
+            </a>
           </div>
         </div>
 

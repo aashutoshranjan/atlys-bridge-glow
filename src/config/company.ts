@@ -19,11 +19,11 @@ export const company = {
   logo: "/atlys-logo.png",
 
   // --- Contact ---
-  supportEmail: "support@atlysbridge.com",
-  hrEmail: "support@atlysbridge.com",
-  phoneNumber: "+91 90062 47022",
-  whatsappNumber: "+91 90062 47022",
-  whatsappLink: "https://wa.me/919006247022",
+  supportEmail: "support@clinchedge.com",
+  hrEmail: "support@clinchedge.com",
+  phoneNumber: "+91 92882 36779",
+  whatsappNumber: "+91 92882 36779",
+  whatsappLink: "https://wa.me/919288236779",
 
   // --- Address ---
   officeAddress: {
