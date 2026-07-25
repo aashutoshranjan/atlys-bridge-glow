@@ -19,8 +19,8 @@ export const company = {
   logo: "/atlys-logo.png",
 
   // --- Contact ---
-  supportEmail: "support@clinchedge.com",
-  hrEmail: "support@clinchedge.com",
+  supportEmail: "support@atlysbridge.com",
+  hrEmail: "support@atlysbridge.com",
   phoneNumber: "+91 92882 36779",
   whatsappNumber: "+91 92882 36779",
   whatsappLink: "https://wa.me/919288236779",
