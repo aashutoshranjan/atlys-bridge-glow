@@ -51,6 +51,9 @@ export const company = {
   // --- Payment ---
   // Replace public/payment-qr.png to update the QR shown on the enrollment page.
   qrCodePath: "/payment-qr.png",
+  // Set your UPI ID here (e.g. "parsebridge@upi") to show a Copy UPI ID
+  // button on the enrollment page. Leave empty to show only the QR code.
+  upiId: "",
 
   // --- Forms ---
   // Paste the Google Apps Script Web App URL here to send enrollment form
