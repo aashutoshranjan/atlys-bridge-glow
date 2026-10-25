@@ -4,6 +4,8 @@ import {
   ShieldCheck,
   Lock,
   BadgeCheck,
+  Copy,
+  Check,
   X,
   Hourglass,
   Sparkles,
@@ -42,6 +44,41 @@ function QRPlaceholder() {
   );
 }
 
+function UpiIdRow() {
+  const [copied, setCopied] = useState(false);
+
+  const copy = async () => {
+    try {
+      await navigator.clipboard.writeText(company.upiId);
+    } catch {
+      const ta = document.createElement("textarea");
+      ta.value = company.upiId;
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand("copy");
+      document.body.removeChild(ta);
+    }
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
+
+  return (
+    <div className="mt-5 flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-2.5">
+      <div className="glass rounded-xl px-4 py-2.5 text-sm font-semibold text-foreground text-center">
+        UPI ID: <span className="text-primary">{company.upiId}</span>
+      </div>
+      <Button
+        onClick={copy}
+        variant="outline"
+        className="rounded-xl h-11 px-4 font-semibold gap-2"
+      >
+        {copied ? <Check className="size-4 text-emerald-600" /> : <Copy className="size-4" />}
+        {copied ? "Copied!" : "Copy UPI ID"}
+      </Button>
+    </div>
+  );
+}
+
 export default function Enroll() {
   const [showModal, setShowModal] = useState(false);
 
@@ -51,7 +88,7 @@ export default function Enroll() {
   }, []);
 
   return (
-    <div className="relative min-h-[calc(100vh-72px)] hero-bg overflow-hidden">
+    <div className="relative min-h-[calc(100vh-72px)] enroll-bg overflow-hidden">
       <div className="absolute inset-0 grid-bg opacity-50 pointer-events-none" />
       <div className="absolute top-10 -right-20 h-96 w-96 rounded-full bg-primary/20 blur-3xl animate-float" />
       <div className="absolute -bottom-10 -left-20 h-96 w-96 rounded-full bg-[oklch(0.78_0.13_200/0.25)] blur-3xl" />
@@ -64,12 +101,12 @@ export default function Enroll() {
           className="text-center mb-10"
         >
           <div className="inline-flex items-center gap-2 glass rounded-full px-4 py-1.5 text-xs font-medium mb-5">
-            <Sparkles className="size-3.5 text-primary" /> Secure Enrollment
-            Payment
+            <Sparkles className="size-3.5 text-primary" /> Confirm Your
+            Participation
           </div>
           <h1 className="font-display font-bold text-4xl lg:text-5xl">
-            Complete your{" "}
-            <span className="brand-gradient-text">enrollment</span>.
+            Complete Your{" "}
+            <span className="brand-gradient-text">Internship Enrollment</span>
           </h1>
           <p className="mt-4 text-muted-foreground max-w-2xl mx-auto">
             Complete your enrollment and receive your Confirmation Email,
@@ -87,7 +124,7 @@ export default function Enroll() {
             initial={{ opacity: 0, x: -16 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
-            className="lg:col-span-3 glass-strong rounded-3xl p-7 lg:p-10 ring-1 ring-white/40"
+            className="lg:col-span-3 glass-strong rounded-3xl p-7 lg:p-10 ring-1 ring-white/40 shadow-[var(--shadow-elevated)]"
           >
             <div className="flex items-center gap-3 mb-6">
               <div className="h-11 w-11 rounded-xl btn-brand grid place-items-center">
@@ -109,6 +146,8 @@ export default function Enroll() {
             </p>
 
             <QRPlaceholder />
+
+            {company.upiId ? <UpiIdRow /> : null}
 
             <div className="mt-6 rounded-2xl border border-amber-200/60 bg-amber-50/60 p-4 text-[13px] text-amber-900 leading-relaxed">
               <strong>Note:</strong> If you pay via any UPI app, the payment
@@ -137,7 +176,7 @@ export default function Enroll() {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="lg:col-span-2"
           >
-            <div className="glass-strong rounded-3xl p-7 ring-1 ring-white/40 space-y-5">
+            <div className="glass-strong rounded-3xl p-7 ring-1 ring-white/40 shadow-[var(--shadow-elevated)] space-y-5">
               <div className="flex items-center gap-3">
                 <div className="h-10 w-10 rounded-xl btn-brand grid place-items-center">
                   <Megaphone className="size-5" />
@@ -269,7 +308,7 @@ export default function Enroll() {
           >
             <motion.div
               initial={{ scale: 0.9, opacity: 0, y: 20 }}
-              animate={{ scale: 1, opacity: 1, y: 0 }}
+              animate={{ scale: 1, opacity: 1, y: 20 }}
               exit={{ scale: 0.9, opacity: 0, y: 20 }}
               transition={{ type: "spring", duration: 0.5 }}
               onClick={(e) => e.stopPropagation()}
