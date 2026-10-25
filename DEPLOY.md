@@ -15,8 +15,8 @@ npm run build
 ```nginx
 server {
     listen 80;
-    server_name atlysbridge.com www.atlysbridge.com;
-    root /var/www/atlysbridge/dist;
+    server_name parsebridge.in www.parsebridge.in;
+    root /var/www/parsebridge/dist;
     index index.html;
 
     # SPA fallback so client routes (/about, /form, /enroll, …) work
@@ -35,7 +35,7 @@ server {
 Then:
 
 ```bash
-sudo rsync -a --delete dist/ /var/www/atlysbridge/dist/
+sudo rsync -a --delete dist/ /var/www/parsebridge/dist/
 sudo nginx -t && sudo systemctl reload nginx
 ```
 
@@ -45,7 +45,7 @@ Edit `src/config/company.ts` (name, domain, emails, WhatsApp, QR path,
 logo, LinkedIn, etc.) and rebuild. Or use the helper script:
 
 ```bash
-./change-company.sh "Atlys Integrated Infotech"
+./change-company.sh "Parsebridge Solutions"
 # or
-npm run change-company "Atlys Integrated Infotech"
+npm run change-company "Parsebridge Solutions"
 ```

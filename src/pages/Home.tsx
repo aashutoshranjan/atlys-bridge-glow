@@ -68,7 +68,7 @@ const benefits = [
 ];
 
 const testimonials = [
-  { name: "Priya Menon", role: "CTO, Finlytix", q: "Atlys rebuilt our analytics platform and shaved 4 months off our roadmap. Exceptional engineering discipline." },
+  { name: "Priya Menon", role: "CTO, Finlytix", q: "Parsebridge rebuilt our analytics platform and shaved 4 months off our roadmap. Exceptional engineering discipline." },
   { name: "Daniel Park", role: "VP Engineering, CarePath", q: "Their AI team productionized our triage model in 6 weeks. The mentorship of our internal engineers was a bonus." },
   { name: "Anika Rao", role: "Head of People, NorthRail", q: "We hired three full-time engineers from the internship pipeline. Quality of talent is genuinely impressive." },
 ];

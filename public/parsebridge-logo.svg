@@ -6,6 +6,6 @@
     </linearGradient>
   </defs>
   <rect width="200" height="200" rx="36" fill="url(#g)"/>
-  <text x="50%" y="56%" text-anchor="middle" font-family="Inter, sans-serif"
-        font-size="110" font-weight="800" fill="white" dominant-baseline="middle">A</text>
+  <text x="50%" y="56%" text-anchor="middle" font-family="Inter, Arial, sans-serif"
+        font-size="110" font-weight="800" fill="white" dominant-baseline="middle">P</text>
 </svg>

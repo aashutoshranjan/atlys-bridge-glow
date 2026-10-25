@@ -11,16 +11,16 @@
 
 export const company = {
   // --- Identity ---
-  name: "Atlys Integrated Infotech",
-  shortName: "Atlys",
+  name: "Parsebridge Solutions",
+  shortName: "Parsebridge",
   tagline: "Engineering tomorrow's enterprise — IT, cloud, AI & talent.",
-  domain: "atlysbridge.com",
-  websiteUrl: "https://atlysbridge.com",
-  logo: "/atlys-logo.png",
+  domain: "parsebridge.in",
+  websiteUrl: "https://parsebridge.in",
+  logo: "/parsebridge-logo.svg",
 
   // --- Contact ---
-  supportEmail: "support@atlysbridge.com",
-  hrEmail: "support@atlysbridge.com",
+  supportEmail: "support@parsebridge.in",
+  hrEmail: "support@parsebridge.in",
   phoneNumber: "+91 92882 36779",
   whatsappNumber: "+91 92882 36779",
   whatsappLink: "https://wa.me/919288236779",
@@ -60,15 +60,15 @@ export const company = {
 
   // --- Misc ---
   unsubscribeFormUrl: "https://forms.gle/v7ssvMGC26TcyHkx7",
-  copyright: `© ${new Date().getFullYear()} Atlys Integrated Infotech. All rights reserved.`,
+  copyright: `© ${new Date().getFullYear()} Parsebridge Solutions. All rights reserved.`,
   footerText:
     "End-to-end IT services, staffing and internship programs based in Bengaluru.",
 
   // --- SEO ---
   metaTitle:
-    "Atlys Integrated Infotech — Enterprise IT, Cloud, AI & Internships",
+    "Parsebridge Solutions — Enterprise IT, Cloud, AI & Internships",
   metaDescription:
-    "Atlys Integrated Infotech delivers end-to-end IT consulting, software development, cloud, AI and structured internship programs from Bengaluru.",
+    "Parsebridge Solutions delivers end-to-end IT consulting, software development, cloud, AI and structured internship programs from Bengaluru.",
 } as const;
 
 export type CompanyConfig = typeof company;

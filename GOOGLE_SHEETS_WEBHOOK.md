@@ -20,7 +20,7 @@ disable webhook posting (the form will still navigate to `/enroll`).
 
 ## 1. Create the Sheet
 
-1. Create a new Google Sheet (e.g. `Atlys Enrollments`).
+1. Create a new Google Sheet (e.g. `Parsebridge Enrollments`).
 2. Add a header row (row 1):
    `Timestamp | Name | Email | Contact | Position | Location | Starting Date | Batch Code`
 3. Copy the Sheet ID from the URL: `https://docs.google.com/spreadsheets/d/<SHEET_ID>/edit`.
