@@ -1,13 +1,12 @@
 import { Link } from "react-router-dom";
 import { company } from "@/config/company";
-import logoSrc from "@/assets/atlys-logo.png";
 
 export default function Logo({ className = "" }: { className?: string }) {
   return (
     <Link to="/" className={`flex items-center gap-3 group ${className}`}>
       <div className="relative h-10 w-10 rounded-xl bg-white/70 backdrop-blur grid place-items-center shadow-[var(--shadow-glass)] border border-white/70 overflow-hidden">
         <img
-          src={logoSrc}
+          src={company.logo}
           alt={`${company.name} logo`}
           className="h-8 w-8 object-contain"
         />
