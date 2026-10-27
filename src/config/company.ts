@@ -1,26 +1,36 @@
-// Centralized company branding & integrations.
-// Single source of truth for the entire website. Update values here and
-// re-run `npm run build` — every page, header, footer, form, button, and
-// meta tag will pick up the new values automatically.
+// ============= Wellaspire Technologies — centralized branding & integrations =============
 //
-// To swap the payment QR image, just replace `public/payment-qr.png` with
-// your new image — no code changes needed (path comes from `qrCodePath`).
+// BUILD-TIME DEFAULTS. At startup the app fetches /config/runtime-config.json
+// (see src/config/runtime.ts) and overrides the following fields on the live
+// site WITHOUT rebuilding the frontend:
 //
-// To change the company name everywhere at once, run:
-//   npm run change-company "New Company Name"
+//   COMPANY_NAME                  -> name
+//   PUBLIC_SITE_URL               -> websiteUrl / domain
+//   SUPPORT_EMAIL                 -> supportEmail / hrEmail
+//   SUPPORT_PHONE                 -> supportPhone / whatsappNumber / whatsappLink
+//   PAYMENT_QR_IMAGE              -> qrCodePath
+//   PAYMENT_UPI_ID                -> upiId
+//   ENROLLMENT_FEE                -> enrollmentFee
+//   POST_SUBMISSION_REDIRECT_PATH -> postSubmissionRedirectPath
+//   APPLICATION_VIDEO_PATH        -> applicationVideoPath
+//
+// Edit values here only to change the shipped defaults. To change them in
+// production, edit /var/www/wellbridge/config/runtime-config.json on the VPS
+// (see DEPLOY.md) — no rebuild and no restart is needed.
 
 export const company = {
   // --- Identity ---
-  name: "Parsebridge Solutions",
-  shortName: "Parsebridge",
+  name: "Wellaspire Technologies",
+  shortName: "Wellaspire",
   tagline: "Engineering tomorrow's enterprise — IT, cloud, AI & talent.",
-  domain: "parsebridge.in",
-  websiteUrl: "https://parsebridge.in",
-  logo: "/parsebridge-logo.svg",
+  domain: "wellbridge.in",
+  websiteUrl: "https://wellbridge.in",
+  logo: "/wellaspire-logo.svg",
 
   // --- Contact ---
-  supportEmail: "support@parsebridge.in",
-  hrEmail: "support@parsebridge.in",
+  supportEmail: "support@atlysbridge.com",
+  hrEmail: "support@atlysbridge.com",
+  supportPhone: "+91 92882 36779",
   phoneNumber: "+91 92882 36779",
   whatsappNumber: "+91 92882 36779",
   whatsappLink: "https://wa.me/919288236779",
@@ -48,30 +58,40 @@ export const company = {
   trainingPlatformLabel:
     "lmstraineeprogram.in is our Internship platform where training and internship happen.",
 
-  // --- Payment ---
-  // Replace public/payment-qr.png to update the QR shown on the enrollment page.
-  qrCodePath: "/payment-qr.png",
-  // Set your UPI ID here (e.g. "parsebridge@upi") to show a Copy UPI ID
-  // button on the enrollment page. Leave empty to show only the QR code.
+  // --- Payments ---
+  // Enrollment QR code image, replaceable on the VPS at
+  // /var/www/wellbridge/uploads/payments/enrollment-qr.png (see DEPLOY.md).
+  qrCodePath: "/uploads/payments/enrollment-qr.png",
+  // UPI ID shown on the /payment page. Leave empty until you have a verified
+  // UPI ID — the page then shows a safe "not configured" notice.
   upiId: "",
+  // Enrollment fee as a plain number, e.g. "999" or "1499.00". Leave empty to
+  // show "as per your Welcome Letter".
+  enrollmentFee: "",
+  // Where the candidate is redirected after a successful form submission.
+  // Internal paths only (must start with "/").
+  postSubmissionRedirectPath: "/enroll",
+
+  // --- Media ---
+  // Short IT intro video shown above the application form, replaceable on the
+  // VPS at /var/www/wellbridge/uploads/media/it-intro.mp4 (see DEPLOY.md).
+  applicationVideoPath: "/uploads/media/it-intro.mp4",
 
   // --- Forms ---
-  // Paste the Google Apps Script Web App URL here to send enrollment form
-  // submissions to your Google Sheet. See GOOGLE_SHEETS_WEBHOOK.md for the
-  // exact Apps Script to deploy. Leave empty to disable webhook posting.
+  // Google Apps Script Web App URL for enrollment form -> Google Sheet.
+  // See GOOGLE_SHEETS_WEBHOOK.md. Leave empty to disable webhook posting.
   googleSheetsWebhookUrl: "",
 
   // --- Misc ---
   unsubscribeFormUrl: "https://forms.gle/v7ssvMGC26TcyHkx7",
-  copyright: `© ${new Date().getFullYear()} Parsebridge Solutions. All rights reserved.`,
+  copyright: `© ${new Date().getFullYear()} Wellaspire Technologies. All rights reserved.`,
   footerText:
     "End-to-end IT services, staffing and internship programs based in Bengaluru.",
 
   // --- SEO ---
-  metaTitle:
-    "Parsebridge Solutions — Enterprise IT, Cloud, AI & Internships",
+  metaTitle: "Wellaspire Technologies — Enterprise IT, Cloud, AI & Internships",
   metaDescription:
-    "Parsebridge Solutions delivers end-to-end IT consulting, software development, cloud, AI and structured internship programs from Bengaluru.",
-} as const;
+    "Wellaspire Technologies delivers end-to-end IT consulting, software development, cloud, AI and structured internship programs from Bengaluru.",
+};
 
 export type CompanyConfig = typeof company;
